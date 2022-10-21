@@ -1,5 +1,6 @@
 package com.example.rsdev
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -33,10 +34,12 @@ class LoginActivity : AppCompatActivity() {
                             if(task.isSuccessful) {
                                 val firebaseUser: FirebaseUser = task.result!!.user!!
                                 Toast.makeText(applicationContext, "Connexion réussie", Toast.LENGTH_SHORT).show()
+                                val FeedActivity = Intent(this, FeedActivity::class.java)
+                                FeedActivity.putExtra("keyIdentifier", "value")
+                                startActivity(FeedActivity)
                             }
                         }
                     )
-                Toast.makeText(applicationContext, "Connexion réussie", Toast.LENGTH_SHORT).show()
             }else{
                 Toast.makeText(applicationContext, "Merci d'entrer des identifiants valides", Toast.LENGTH_SHORT).show()
             }

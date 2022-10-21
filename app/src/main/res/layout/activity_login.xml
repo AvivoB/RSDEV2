@@ -8,6 +8,18 @@
     tools:context=".LoginActivity">
 
     <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/btn_login_line" />
+
+    <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,86 +82,104 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.358" />
 
-    <TextView
-        android:id="@+id/btn_google_login"
-        android:layout_width="277dp"
-        android:layout_height="24dp"
-        android:clickable="true"
-        android:contentDescription="WelcomeTo"
-        android:fontFamily="@font/poppins_medium"
-        android:shadowColor="#707070"
-        android:text="Se connecter"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_google_login"
-        app:layout_constraintTop_toTopOf="@+id/btn_google_login"
-        app:srcCompat="@drawable/fui_ic_googleg_color_24dp"
-        tools:layout_editor_absoluteX="114dp" />
-
     <EditText
         android:id="@+id/email_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:background="#FFFFFF"
+        android:layout_width="308dp"
+        android:layout_height="48dp"
+        android:background="@drawable/edit_text"
         android:ems="10"
         android:fontFamily="@font/poppins_medium"
         android:hint="Adresse E-mail"
         android:inputType="textEmailAddress"
         android:paddingLeft="10dp"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textColor="#000000"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
-        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.44" />
 
     <EditText
         android:id="@+id/password_login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="72dp"
-        android:background="#FFFFFF"
+        android:layout_width="315dp"
+        android:layout_height="47dp"
+        android:background="@drawable/edit_text"
         android:ems="10"
         android:fontFamily="@font/poppins_medium"
         android:hint="Mot de passe"
         android:inputType="textPassword"
         android:paddingLeft="10dp"
-        android:paddingTop="5dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:textColor="#000000"
+        android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.152"
+        app:layout_constraintHorizontal_bias="0.531"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.487" />
+        app:layout_constraintVertical_bias="0.536" />
 
     <Button
         android:id="@+id/btn_login"
-        android:layout_width="144dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="185dp"
         android:layout_height="38dp"
-        android:background="#471313"
-        android:backgroundTint="#683131"
+        android:backgroundTint="@color/white"
         android:fontFamily="@font/poppins_medium"
+        android:isScrollContainer="false"
+        android:shadowColor="#00FFFFFF"
+        android:shadowDx="0"
+        android:shadowDy="0"
         android:text="Connexion"
+        android:textColor="#000000"
+        app:icon="@drawable/arrow"
+        app:iconGravity="end"
+        app:iconTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.775"
+        app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.561" />
+        app:layout_constraintVertical_bias="0.914" />
+
+    <ImageView
+        android:id="@+id/icon_google"
+        android:layout_width="24dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="161dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="147dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toBottomOf="@+id/google_login"
+        app:layout_constraintEnd_toEndOf="@+id/google_login"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/google_login"
+        app:layout_constraintStart_toStartOf="@+id/google_login"
+        app:layout_constraintTop_toTopOf="@+id/google_login"
+        app:srcCompat="@drawable/fui_ic_googleg_color_24dp" />
+
+    <Button
+        android:id="@+id/google_login"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="173dp"
+        android:layout_height="44dp"
+        android:fontFamily="@font/poppins_bold"
+        android:hapticFeedbackEnabled="false"
+        android:isScrollContainer="false"
+        android:text="Se connecter"
+        android:textColor="#000000"
+        app:iconGravity="end"
+        app:iconSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.656" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
