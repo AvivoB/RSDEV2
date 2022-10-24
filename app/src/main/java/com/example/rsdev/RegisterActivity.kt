@@ -31,7 +31,6 @@ class RegisterActivity : AppCompatActivity() {
                     .addOnCompleteListener(
                         { task ->
                             if(task.isSuccessful) {
-                                val firebaseUser: FirebaseUser = task.result!!.user!!
                                 Toast.makeText(applicationContext, "Connexion réussie", Toast.LENGTH_SHORT).show()
                             }
                         }
