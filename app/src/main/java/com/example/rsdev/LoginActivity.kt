@@ -12,7 +12,9 @@ import android.widget.Toast
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
 
@@ -20,6 +22,10 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var signInRequest: BeginSignInRequest
     private val REQ_ONE_TAP = 2  // Can be any integer unique to the Activity
     private var showOneTapUI = true
+
+    private lateinit var signUpRequest: BeginSignInRequest
+
+    val db = Firebase.firestore
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,35 +67,31 @@ class LoginActivity : AppCompatActivity() {
         }
 
         btn_google.setOnClickListener{
+
             oneTapClient = Identity.getSignInClient(this)
-            signInRequest = BeginSignInRequest.builder()
-                .setPasswordRequestOptions(BeginSignInRequest.PasswordRequestOptions.builder()
-                    .setSupported(true)
-                    .build())
+            signUpRequest = BeginSignInRequest.builder()
                 .setGoogleIdTokenRequestOptions(
                     BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
                         .setSupported(true)
                         // Your server's client ID, not your Android client ID.
-                        .setServerClientId("922656101530-r7nf5gsa727fpmj721bnc7jslmvi9hm7.apps.googleusercontent.com")
-                        // Only show accounts previously used to sign in.
-                        .setFilterByAuthorizedAccounts(true)
+                        .setServerClientId(getString(R.string.google_client_id_on_tap_sign_ing))
+                        // Show all accounts on the device.
+                        .setFilterByAuthorizedAccounts(false)
                         .build())
-                // Automatically sign in when exactly one credential is retrieved.
-                .setAutoSelectEnabled(true)
                 .build()
-
-            oneTapClient.beginSignIn(signInRequest)
+            oneTapClient.beginSignIn(signUpRequest)
                 .addOnSuccessListener(this) { result ->
                     try {
                         startIntentSenderForResult(
                             result.pendingIntent.intentSender, REQ_ONE_TAP,
-                            null, 0, 0, 0, null)
+                            null, 0, 0, 0)
                     } catch (e: IntentSender.SendIntentException) {
+                        Log.e(TAG, "Couldn't start One Tap UI: ${e.localizedMessage}")
                     }
                 }
                 .addOnFailureListener(this) { e ->
-                    // No saved credentials found. Launch the One Tap sign-up flow, or
-                    // do nothing and continue presenting the signed-out UI.
+                    // No Google Accounts found. Just continue presenting the signed-out UI.
+                    Log.d(TAG, e.localizedMessage)
                 }
 
         }
@@ -97,6 +99,45 @@ class LoginActivity : AppCompatActivity() {
         btn_register.setOnClickListener {
             val RegisterActivity = Intent(this, RegisterActivity::class.java)
             startActivity(RegisterActivity)
+        }
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when (requestCode) {
+            REQ_ONE_TAP -> {
+                try {
+                    val credential = oneTapClient.getSignInCredentialFromIntent(data)
+                    val idToken = credential.googleIdToken
+                    when {
+                        idToken != null -> {
+                            // Got an ID token from Google. Use it to authenticate
+                            // with your backend.
+                            val data = hashMapOf(
+                                "user_id" to idToken,
+                            )
+
+                            db.collection("cities")
+                                .add(data)
+                                .addOnSuccessListener { documentReference ->
+                                    Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+                                }
+                                .addOnFailureListener { e ->
+                                    Log.w(TAG, "Error adding document", e)
+                                }
+                            Log.d(TAG, "Got ID token.")
+                        }
+                        else -> {
+                            // Shouldn't happen.
+                            Log.d(TAG, "No ID token!")
+                        }
+                    }
+                } catch (e: ApiException) {
+
+                }
+            }
         }
     }
 }
