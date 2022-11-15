@@ -49,6 +49,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.087" />
 
+    <DatePicker
+        android:id="@+id/brith_date"
+        android:layout_width="319dp"
+        android:layout_height="71dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edit_text"
+        android:calendarTextColor="#000000"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner"
+        android:dayOfWeekBackground="#000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.554"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.407" />
+
     <TextView
         android:id="@+id/textView6"
         android:layout_width="148dp"
@@ -85,7 +102,7 @@
         app:layout_constraintVertical_bias="0.177" />
 
     <EditText
-        android:id="@+id/email_login"
+        android:id="@+id/firstname_user"
         android:layout_width="155dp"
         android:layout_height="47dp"
         android:background="@drawable/edit_text"
@@ -146,10 +163,9 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.514"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.534" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/confirm_password"
@@ -168,10 +184,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.572"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.634" />
+        app:layout_constraintVertical_bias="0.572" />
 
     <EditText
         android:id="@+id/password_login"
@@ -190,10 +206,10 @@
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.531"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.725" />
+        app:layout_constraintVertical_bias="0.644" />
 
     <Button
         android:id="@+id/btn_login"
@@ -275,70 +291,11 @@
         app:layout_constraintVertical_bias="0.828" />
 
     <EditText
-        android:id="@+id/day_user"
-        android:layout_width="100dp"
-        android:layout_height="47dp"
-        android:background="@drawable/edit_text"
+        android:id="@+id/editTextDate2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Jour"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.174"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
-
-    <EditText
-        android:id="@+id/month_user"
-        android:layout_width="100dp"
-        android:layout_height="47dp"
-        android:background="@drawable/edit_text"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Mois"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
-
-    <EditText
-        android:id="@+id/year_user"
-        android:layout_width="100dp"
-        android:layout_height="47dp"
-        android:background="@drawable/edit_text"
-        android:ems="10"
-        android:fontFamily="@font/poppins_medium"
-        android:hint="Année"
-        android:inputType="number"
-        android:paddingLeft="10dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/gray"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.845"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.44" />
+        android:inputType="date" />
 
     <EditText
         android:id="@+id/username_user"
@@ -359,6 +316,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349" />
+        app:layout_constraintVertical_bias="0.328" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

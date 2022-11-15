@@ -15,14 +15,18 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         if(FirebaseAuth.getInstance().currentUser == null) {
-            val FeedActivity = Intent(this, FeedActivity::class.java)
-            FeedActivity.putExtra("keyIdentifier", "value")
-            startActivity(FeedActivity)
+            val LoginActivity = Intent(this, LoginActivity::class.java)
+            LoginActivity.putExtra("keyIdentifier", "value")
+            startActivity(LoginActivity)
+
         } else {
+            //val FeedActivity = Intent(this, FeedActivity::class.java)
+            //FeedActivity.putExtra("keyIdentifier", "value")
+            //startActivity(FeedActivity)
+
             val LoginActivity = Intent(this, LoginActivity::class.java)
             LoginActivity.putExtra("keyIdentifier", "value")
             startActivity(LoginActivity)
         }
-
     }
 }

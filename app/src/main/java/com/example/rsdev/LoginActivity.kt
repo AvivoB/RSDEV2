@@ -14,6 +14,7 @@ import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
@@ -37,7 +38,7 @@ class LoginActivity : AppCompatActivity() {
         val btn_login = findViewById(R.id.btn_login) as Button
         val btn_register = findViewById(R.id.btn_register) as Button
         val btn_google = findViewById(R.id.google_login) as Button
-        val email_login_input = findViewById(R.id.email_login) as EditText
+        val email_login_input = findViewById(R.id.firstname_user) as EditText
         val password_login_input = findViewById(R.id.password_login) as EditText
 
         // Action au click de connexion
@@ -119,7 +120,7 @@ class LoginActivity : AppCompatActivity() {
                                 "user_id" to idToken,
                             )
 
-                            db.collection("cities")
+                            db.collection("users")
                                 .add(data)
                                 .addOnSuccessListener { documentReference ->
                                     Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
