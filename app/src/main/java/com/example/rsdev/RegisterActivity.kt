@@ -60,11 +60,10 @@ class RegisterActivity : AppCompatActivity() {
                                 .addOnFailureListener { e ->
                                     Log.w(TAG, "Error adding document", e)
                                 }
-
-
+                                Toast.makeText(applicationContext, "Connexion réussie", Toast.LENGTH_SHORT).show()
                         }
                     }
-                Toast.makeText(applicationContext, "Connexion réussie", Toast.LENGTH_SHORT).show()
+
             }else{
                 Toast.makeText(applicationContext, "Merci d'entrer des identifiants valides", Toast.LENGTH_SHORT).show()
             }
