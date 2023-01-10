@@ -3,17 +3,18 @@ package com.example.rsdev
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.IntentSender
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
@@ -49,18 +50,24 @@ class LoginActivity : AppCompatActivity() {
             if(email.toString().trim().isNotEmpty() && password.toString().isNotEmpty()) {
                 //login du user avec son MDP
                 FirebaseAuth.getInstance().signInWithEmailAndPassword(email, password)
-                    .addOnCompleteListener(
-                        { task ->
-                            if(task.isSuccessful) {
-                                Toast.makeText(applicationContext, "Connexion réussie", Toast.LENGTH_SHORT).show()
-                                val FeedActivity = Intent(this, FeedActivity::class.java)
-                                FeedActivity.putExtra("keyIdentifier", "value")
-                                startActivity(FeedActivity)
-                            } else {
-                                Toast.makeText(applicationContext, "Identifants incorrects", Toast.LENGTH_SHORT).show()
-                            }
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(
+                                applicationContext,
+                                "Connexion réussie",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            val FeedActivity = Intent(this, MyMessage::class.java)
+                            FeedActivity.putExtra("keyIdentifier", "value")
+                            startActivity(FeedActivity)
+                        } else {
+                            Toast.makeText(
+                                applicationContext,
+                                "Identifants incorrects",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
-                    )
+                    }
             }else{
                 Toast.makeText(applicationContext, "Merci d'entrer des identifiants valides", Toast.LENGTH_SHORT).show()
             }
