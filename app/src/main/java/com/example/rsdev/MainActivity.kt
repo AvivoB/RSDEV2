@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
             //FeedActivity.putExtra("keyIdentifier", "value")
             //startActivity(FeedActivity)
 
-            val LoginActivity = Intent(this, LoginActivity::class.java)
+            val LoginActivity = Intent(this, FeedActivity::class.java)
             LoginActivity.putExtra("keyIdentifier", "value")
             startActivity(LoginActivity)
         }
