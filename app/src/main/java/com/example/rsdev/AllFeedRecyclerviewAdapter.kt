@@ -55,7 +55,7 @@ class AllFeedRecyclerviewAdapter (
                 binding.dateTime.text = "Date: " + sdf.format(date)
 
                 try {
-                    Glide.with(context).load(
+                     Glide.with(context).load(
                         postImageUrl
                     ).apply(options).into(binding.image)
                 } catch (e: Exception) {

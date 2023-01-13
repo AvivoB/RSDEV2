@@ -52,11 +52,11 @@
                 android:layout_weight="1"
                 android:ellipsize="end"
                 android:gravity="center"
-                android:padding="@dimen/_4sdp"
+                android:padding="4dp"
                 android:singleLine="true"
                 android:text="No Upcoming Events Found!"
                 android:textColor="@color/primaryDarkColor"
-                android:textSize="@dimen/_12ssp"
+                android:textSize="12dp"
                 android:textStyle="bold"
                 android:visibility="invisible" />
 
@@ -65,20 +65,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clickable="true"
-                android:elevation="@dimen/_20sdp"
+                android:elevation="20dp"
                 android:foreground="?android:attr/selectableItemBackground"
-                android:paddingHorizontal="@dimen/_16sdp"
-                app:cardCornerRadius="@dimen/_12sdp"
+                android:paddingHorizontal="16dp"
+                app:cardCornerRadius="12dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
                 tools:listitem="@layout/item_post" />
 
-
         </RelativeLayout>
 
-
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 
     <ProgressBar
         android:id="@+id/progress_bar"
@@ -97,12 +94,44 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="12dp"
+        android:backgroundTint="@color/secondaryColor"
+        android:clickable="true"
+        android:src="@drawable/profil"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/addFriend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="165dp"
+        android:backgroundTint="@color/secondaryColor"
+        android:clickable="true"
+        android:src="@drawable/add_friend"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="@color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/createNewPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_12sdp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="320dp"
         android:backgroundTint="@color/secondaryColor"
         android:clickable="true"
         android:src="@drawable/ic_baseline_post_add_24"

@@ -20,13 +20,14 @@ class MainActivity : AppCompatActivity() {
             startActivity(LoginActivity)
 
         } else {
-            //val FeedActivity = Intent(this, FeedActivity::class.java)
-            //FeedActivity.putExtra("keyIdentifier", "value")
-            //startActivity(FeedActivity)
+            val FeedActivity = Intent(this, FeedActivity::class.java)
+            FeedActivity.putExtra("keyIdentifier", "value")
+            startActivity(FeedActivity)
 
-            val LoginActivity = Intent(this, FeedActivity::class.java)
-            LoginActivity.putExtra("keyIdentifier", "value")
-            startActivity(LoginActivity)
+//            val LoginActivity = Intent(this, FeedActivity::class.java)
+//            LoginActivity.putExtra("keyIdentifier", "value")
+//            startActivity(LoginActivity)
+
         }
     }
 }

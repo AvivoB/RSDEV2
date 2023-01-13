@@ -59,7 +59,17 @@ class FeedActivity : AppCompatActivity(), Toolbar.OnMenuItemClickListener {
             startActivity(LoginActivity)
         }
 
-        binding.swiperefresh.setOnRefreshListener {
+        binding.profile.setOnClickListener {
+            val ProfileActivity = Intent(this, ProfileActivity::class.java)
+            startActivity(ProfileActivity)
+        }
+
+        binding.addFriend.setOnClickListener {
+            val AddFriendActivity = Intent(this, AddFriendActivity::class.java)
+            startActivity(AddFriendActivity)
+        }
+
+         binding.swiperefresh.setOnRefreshListener {
             getAllPosts()
             binding.swiperefresh.isRefreshing = false
         }
